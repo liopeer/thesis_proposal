@@ -1,0 +1,41 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+
+\usepackage[backend=biber, bibencoding=utf8]{biblatex}
+\bibliography{literature.bib}
+
+\title{Thesis Proposal: Conditioning of DDPMs on Accelerated MRI}
+\author{Lionel Peer}
+
+\date{\today}
+
+\begin{document}
+\maketitle
+\vfill
+\begin{tabular}{l l}
+    Start       & 18.09.2023                               \\
+    End         & 25.12.2023                               \\
+    Supervision & \textbf{Prof. Dr. Ender Konukoglu}       \\
+                & Institute for Biomedical Image Computing \\
+    Advisers    & Georg Brunner \& Emiljo Mehillaj
+\end{tabular}
+\tableofcontents
+\newpage
+
+\section{Background}
+Data acquisition in magnetic resonance imaging (MRI) takes a long time and reducing this acquisition time has been a long standing research problem for the following reasons:
+\begin{enumerate}
+    \item MRI machines could perform more scans, driving down the cost per patient, and opening up diagnosis with MRI for a larger number of patients.
+    \item Better performance on dynamic imaging, since the temporal resolution could be increased.
+    \item Higher patient comfort and less unsuccessful scans due to patient motion.
+\end{enumerate}
+Recently, methods using undersampling of Fourier space have received much attention and with the rise of generative deep learning~\cite{kingma2022autoencoding}
+\section{The Thesis Project}
+\section{Project Schedule}
+\section{Supervisor and Support}
+
+\printbibliography[title=References]
+\end{document}
