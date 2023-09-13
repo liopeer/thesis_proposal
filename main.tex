@@ -2,7 +2,13 @@
 
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
-\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
+\usepackage{easyReview}
+
+% ======== REVIEW ON/OFF ========
+\setreviewson
+%\setreviewsoff
+% ===============================
 
 \usepackage[backend=biber, bibencoding=utf8]{biblatex}
 \bibliography{literature.bib}
@@ -20,7 +26,7 @@
     End         & 25.12.2023                               \\
     Supervision & \textbf{Prof. Dr. Ender Konukoglu}       \\
                 & Institute for Biomedical Image Computing \\
-    Advisers    & Georg Brunner \& Emiljo Mehillaj
+    Advisors    & Georg Brunner \& Emiljo Mehillaj
 \end{tabular}
 \tableofcontents
 \newpage
@@ -32,10 +38,61 @@ Data acquisition in magnetic resonance imaging (MRI) takes a long time and reduc
     \item Better performance on dynamic imaging, since the temporal resolution could be increased.
     \item Higher patient comfort and less unsuccessful scans due to patient motion.
 \end{enumerate}
-Recently, methods using undersampling of Fourier space have received much attention and with the rise of generative deep learning~\cite{kingma2022autoencoding}
-\section{The Thesis Project}
+Recently, methods using undersampling of Fourier space have received much attention and with the rise of generative deep learning~\cite{kingma2022autoencoding,goodfellow2014generative,ho2020denoising} it is now possible to use highly sophisticated learned priors when solving this ill-posed inverse problem.
+
+\section{Thesis Project}
+
+\subsection{Implementation of State-of-the-Art Reconstruction using DDPMs}
+The final goal of the thesis is to reach reconstruction performance comparable to the state-of-the art~\cite{10.1007/978-3-031-16446-0_62}, using denoising diffusion probabilistic models (DDPMs), conditioned on the undersampling pattern of the measurement space and other measurement parameters.
+
+As a first step, unconditioned DDPMs have to be understood and implemented. This includes experiments with different noise schedules (e.g., linear scheduling, cosine scheduling, \dots)~\cite{ho2020denoising,nichol2021improved} and different neural network backbones (e.g., U-Net \add{and variants})~\cite{ronneberger2015unet}. To understand basic conditioning, this can be extended to simple categorical conditioning, trainable on publicly available datasets such as ImageNet~\cite{5206848} or FashionMNIST~\cite{xiao2017fashionmnist}.
+
+In a second step, the created models should be adapted to the context of accelerated MRI. This includes the creation of a forward model, that allows training on MRI-specific datasets, even if they were acquired using different acquisition protocols.~\cite{publicdatasetsCambridge} The forward model will vastly increase the amount of available data for training, thanks to publicly available datasets. Further, a study of the current state-of-the-art~\cite{10.1007/978-3-031-16446-0_62} and strongly performing foundation models outside the medical context~\cite{rombach2022highresolution} should provide ideas for enhancing the conditioning and the neural network backbone, and those enhancements should be implemented.
+
+The last step should focus on improving training and evaluation. Specifically this includes performance comparison to the current state-of-the-art, using the same evaluation metrics, as well making use of novel training strategies that the student is interested in~\cite{loshchilov2017sgdr,micikevicius2018mixed}.
+
+\subsection{Theoretical View on Generative Machine Learning}
+As part of the written thesis, an overview over the history and the existing methods of generative modeling and machine learning should be provided. This part should also provide a Bayesian perspective on the training objectives when optimizing/training these models.
+
+\subsection{Focus on Code Reuseability}
+The research output of the thesis project should have long-lasting value to the research group and the research community as a whole. The produced code should therefore focus on reuseability, by following the principles:
+\begin{enumerate}
+    \item Trackable version history and open-source accessibility through \textit{git} and \textit{GitHub}.
+    \item Extensive useage of \textit{PyTorch} interfaces for easy interoperability and scalability with other \textit{PyTorch}-based components.
+    \item Automated code documentation and instructions for stable set up of the build/run environment.
+\end{enumerate}
+The repository for the project has been set up as \href{https://github.com/liopeer/diffusionmodels}{GitHub - LioPeer/DiffusionModels} and the corresponding documentation is published on a dedicated webpage \href{https://liopeer.github.io/diffusionmodels/index.html}{GitHubPages - DiffusionModels}.
+
+\subsection{Further Ideas}
+\label{sec:ideacorner}
+The documentation homepage maintains an idea corner (\href{https://liopeer.github.io/diffusionmodels/idea_corner.html}{Diffusion Models - Idea Corner}) for collecting ideas on publicly available datasets, training strategies, related research papers, theoretical views on generative machine learning and more. The idea corner should not only be populated by the student, but also the supervisor/advisors, and certain points from this idea corner should be included in the code implementation after discussion with the supervisor/advisors.
+
 \section{Project Schedule}
-\section{Supervisor and Support}
+\begin{tabular}{l l}
+    September/October & Implementation of basic conditioning           \\ & outside the medical imaging context.                                                       \\
+    November          & Completion of the forward model, adaptation of \\ & datasets for the stated purpose \& \\ & implementation of sophisticated conditioning. \\
+    December          & Evaluation, training strategies                \\ & and finalizing the written thesis.
+\end{tabular}
+
+\section{Supervision and Support}
+Supervisor\\
+Prof. Dr. Ender Konukoglu \hrule
+\vspace{1cm}
+
+Advisor \\
+Emiljo Mehillaj \hrule
+\vspace{1cm}
+
+
+Advisor \\
+Georg Brunner \hrule
+\vspace{1cm}
+
+
+Student \\
+Lionel Peer \hrule
+\vspace{1cm}
+
 
 \printbibliography[title=References]
 \end{document}
