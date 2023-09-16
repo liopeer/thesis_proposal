@@ -1,8 +1,12 @@
 {
     "name": "project-dev",
-    "dockerComposeFile": ["docker-compose.yml"],
+    "dockerComposeFile": [
+        "docker-compose.yml"
+    ],
     "service": "vscode",
-    "runServices": ["vscode"],
+    "runServices": [
+        "vscode"
+    ],
     "shutdownAction": "stopCompose",
     "workspaceFolder": "/workspace",
     "postCreateCommand": "",
@@ -16,11 +20,14 @@
                 "shardulm94.trailing-spaces",
                 "stkb.rewrap", // rewrap comments after n characters on one line
                 // Other
-                "vscode-icons-team.vscode-icons"
+                "vscode-icons-team.vscode-icons",
+                "ms-azuretools.vscode-docker",
+                "ms-vscode-remote.remote-containers"
             ],
             "settings": {
                 // General settings
                 "files.eol": "\n",
+                "editor.wordWrap": "on",
                 // Latex settings
                 "latex-workshop.linting.chktex.enabled": true,
                 "latex-workshop.linting.chktex.exec.path": "chktex",

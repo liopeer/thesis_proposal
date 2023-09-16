@@ -6,14 +6,14 @@
 \usepackage{easyReview}
 
 % ======== REVIEW ON/OFF ========
-\setreviewson
-%\setreviewsoff
+%\setreviewson
+\setreviewsoff
 % ===============================
 
 \usepackage[backend=biber, bibencoding=utf8]{biblatex}
 \bibliography{literature.bib}
 
-\title{Thesis Proposal: Conditioning of DDPMs on Accelerated MRI}
+\title{Thesis Proposal:\\Conditioning of DDPMs on Accelerated MRI}
 \author{Lionel Peer}
 
 \date{\today}
@@ -45,9 +45,9 @@ Recently, methods using undersampling of Fourier space have received much attent
 \subsection{Implementation of State-of-the-Art Reconstruction using DDPMs}
 The final goal of the thesis is to reach reconstruction performance comparable to the state-of-the art~\cite{10.1007/978-3-031-16446-0_62}, using denoising diffusion probabilistic models (DDPMs), conditioned on the undersampling pattern of the measurement space and other measurement parameters.
 
-As a first step, unconditioned DDPMs have to be understood and implemented. This includes experiments with different noise schedules (e.g., linear scheduling, cosine scheduling, \dots)~\cite{ho2020denoising,nichol2021improved} and different neural network backbones (e.g., U-Net \add{and variants})~\cite{ronneberger2015unet}. To understand basic conditioning, this can be extended to simple categorical conditioning, trainable on publicly available datasets such as ImageNet~\cite{5206848} or FashionMNIST~\cite{xiao2017fashionmnist}.
+As a first step, unconditioned DDPMs have to be understood and implemented. This includes experiments with different noise schedules (e.g., linear scheduling, cosine scheduling, \dots)~\cite{ho2020denoising,nichol2021improved} and different neural network backbones (e.g., U-Net \add{and variants})~\cite{ronneberger2015unet}. To understand conditioning, this can be extended to inverse problems such as inpainting, trainable on publicly available datasets like ImageNet~\cite{5206848} or FashionMNIST~\cite{xiao2017fashionmnist}. This is thought to be a simpler problem, due to better interpretability of the measurement space in normal images compared to MRI.
 
-In a second step, the created models should be adapted to the context of accelerated MRI. This includes the creation of a forward model, that allows training on MRI-specific datasets, even if they were acquired using different acquisition protocols.~\cite{publicdatasetsCambridge} The forward model will vastly increase the amount of available data for training, thanks to publicly available datasets. Further, a study of the current state-of-the-art~\cite{10.1007/978-3-031-16446-0_62} and strongly performing foundation models outside the medical context~\cite{rombach2022highresolution} should provide ideas for enhancing the conditioning and the neural network backbone, and those enhancements should be implemented.
+In a second step, the created models should be adapted to the context of accelerated MRI. This includes the creation of a forward model, that allows creating articial acquisitions of undersampled and multi-coil MRI using publicly available MRI datasets.~\cite{publicdatasetsCambridge} The forward model will vastly increase the amount of available data for training. Further, a study of the current state-of-the-art~\cite{10.1007/978-3-031-16446-0_62} and strongly performing foundation models outside the medical context~\cite{rombach2022highresolution} should provide ideas for enhancing the conditioning and the neural network backbone, and those enhancements should be implemented.
 
 The last step should focus on improving training and evaluation. Specifically this includes performance comparison to the current state-of-the-art, using the same evaluation metrics, as well making use of novel training strategies that the student is interested in~\cite{loshchilov2017sgdr,micikevicius2018mixed}.
 
@@ -57,11 +57,11 @@ As part of the written thesis, an overview over the history and the existing met
 \subsection{Focus on Code Reuseability}
 The research output of the thesis project should have long-lasting value to the research group and the research community as a whole. The produced code should therefore focus on reuseability, by following the principles:
 \begin{enumerate}
-    \item Trackable version history and open-source accessibility through \textit{git} and \textit{GitHub}.
-    \item Extensive useage of \textit{PyTorch} interfaces for easy interoperability and scalability with other \textit{PyTorch}-based components.
+    \item Trackable version history and open-source accessibility through git and GitHub.
+    \item Extensive useage of PyTorch interfaces for easy interoperability and scalability with other PyTorch-based components.
     \item Automated code documentation and instructions for stable set up of the build/run environment.
 \end{enumerate}
-The repository for the project has been set up as \href{https://github.com/liopeer/diffusionmodels}{GitHub - LioPeer/DiffusionModels} and the corresponding documentation is published on a dedicated webpage \href{https://liopeer.github.io/diffusionmodels/index.html}{GitHubPages - DiffusionModels}.
+The repository for the project has been set up as \url{https://github.com/liopeer/diffusionmodels} and the corresponding documentation is published on a dedicated webpage \url{https://liopeer.github.io/diffusionmodels/index.html}.
 
 \subsection{Further Ideas}
 \label{sec:ideacorner}
